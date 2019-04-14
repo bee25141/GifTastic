@@ -24,6 +24,16 @@ $.ajax({
     method: "GET"
   }).then(function(response) {
   console.log(response);
+
+  var results = response.data;
+  for (i=0; i<results.length; i++){
+      var gifDiv = $("<div>");
+      var rating = $("<p>" + results[i].images.rating);
+      var gifImage = $("<img>").attr("src", results[i].images.fixed_height.url);
+
+      $("gifDiv").append(gifImage + rating);
+      $("#image-container").prepend(gifImage);
+  }
 });
 
 
