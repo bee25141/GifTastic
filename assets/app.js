@@ -8,7 +8,9 @@ for (i=0; i<topics.length; i++){
 function buttonCreate(buttonText){
         var button = $("<button>");
         button.text(buttonText);
-        $("#image-container").append(button);
+        debugger;
+        button.attr("value", buttonText);
+        $("#buttons-view").append(button);
 };
 //This function creates new buttons with the user's input
 $(".submit").on("click", function(){
@@ -18,19 +20,21 @@ $(".submit").on("click", function(){
 });
 
 $("button").on("click", function(){
-var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topics + "&api_key=VYfqZGOrTXoZ7ECrxfyLv3KRkeogYqXu&limit=10"
+var queryInput = $(this).val();
+debugger;
+var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + queryInput + "&api_key=VYfqZGOrTXoZ7ECrxfyLv3KRkeogYqXu&limit=10";
 $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-  console.log(response);
 
   var results = response.data;
   for (i=0; i<results.length; i++){
+      console.log(results);
       var gifDiv = $("<div>");
       var rating = $("<p>" + results[i].images.rating);
       var gifImage = $("<img>").attr("src", results[i].images.fixed_height.url);
-
+        // debugger;
       $("gifDiv").append(gifImage + rating);
       $("#image-container").prepend(gifImage);
   }
