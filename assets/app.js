@@ -35,9 +35,9 @@ $.ajax({
       var gifDiv = $("<div>");
       // debugger;
       var rating = $("<p>" + results[i].rating);
-      var gifImage = $("<img>").attr("src", results[i].images.fixed_height_still.url);
-      gifImage.attr("data-state", "still");
-      gifImage.attr("src", results[i].images.fixed_height.url);
+      var gifImage = $("<img>").attr("src", results[i].images.fixed_height.url);
+      gifImage.attr("data-animate", results[i].images.fixed_height.url);
+      gifImage.attr("data-still", results[i].images.fixed_height_still.url);
       gifImage.attr("data-state", "animate");
       gifImage.addClass("gif");
       console.log(gifImage);
