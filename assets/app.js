@@ -36,9 +36,9 @@ $(document).ready(function () {
 
         var rating = results[i].rating;
         // debugger;
-        var gifRating = $("<p>").text(rating);
+        var gifRating = $("<p>");
         // console.log(results[i].rating);
-        // gifRating.text(results[i].rating);
+        gifRating.text("Rating: "+ rating);
         console.log(gifRating);
         var gifImage = $("<img>").attr("src", results[i].images.fixed_height.url);
         gifImage.attr("data-animate", results[i].images.fixed_height.url);
@@ -46,11 +46,11 @@ $(document).ready(function () {
         gifImage.attr("data-state", "animate");
         gifImage.addClass("gif");
         
-        $("gifDiv").append(gifRating);
-        debugger;
-        $("gifDiv").append(gifImage);
-        $("gifDiv").addClass("gif");
-        $("#image-container").prepend(gifImage);
+        gifDiv.append(gifRating);
+        // debugger;
+        gifDiv.append(gifImage);
+        gifDiv.addClass("gif");
+        $("#image-container").prepend(gifDiv);
       }
     });
 
